@@ -1,11 +1,13 @@
-# Update Raspberry Pis
 <div align="center">
+<h1>Update Raspberry Pis</h1>
+
   
 
 [![Ansible-lint](https://github.com/1Pete3/Update_Raspberry_Pis/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/1Pete3/Update_Raspberry_Pis/actions/workflows/ansible-lint.yml)   [![YAML-lint](https://github.com/1Pete3/Update_Raspberry_Pis/actions/workflows/yaml-lint.yml/badge.svg)](https://github.com/1Pete3/Update_Raspberry_Pis/actions/workflows/yaml-lint.yml)
-</div>
+
 
 Automated patch management for a Raspberry Pi homelab fleet. Runs daily via cron, updates all nodes, and sends a Discord notification confirming the result — whether packages changed or not.
+</div>
 
 ---
 
