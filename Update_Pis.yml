@@ -3,6 +3,7 @@
   hosts: 192.168.50.198
   connection: local
   become: true
+  changed_when: pihole_update.rc == 0
   tasks:
     - name: Update Pi hole
       ansible.builtin.command:
@@ -13,7 +14,8 @@
       ansible.builtin.debug:
         msg: "{{ pihole_update.stdout }}"
 
-- hosts: all
+- name: Update, upgrade, and send notifications
+  hosts: all
   become: true
   tasks:
     - name: Update and upgrade apt packages
