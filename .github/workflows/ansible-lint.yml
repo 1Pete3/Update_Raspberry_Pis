@@ -1,6 +1,7 @@
+--- 
 name: Ansible-lint
 run-name: Ansible-lint
-on: [push, pull_request]
+"on": [push, pull_request]
 jobs:
   lint:
     runs-on: ubuntu-latest

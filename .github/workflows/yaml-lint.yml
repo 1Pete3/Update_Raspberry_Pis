@@ -1,6 +1,7 @@
+--- 
 name: YAML-lint
 run-name: YAML-lint
-on:
+"on":
     [push, pull_request]
 jobs:
     yml-lint:
@@ -9,4 +10,3 @@ jobs:
             - uses: actions/checkout@v4
             - name: yaml-lint
               uses: ibiqlik/action-yamllint@v3
-              
