@@ -1,4 +1,16 @@
 ---
+- hosts: 192.168.50.198
+  connection: local
+  become: true
+  tasks:
+  - name: Update Pi hole
+    ansible.builtin.command:
+      cmd: pihole -up
+    register: pihole_update
+  
+  - name: Pihole update output
+    ansible.builtin.debug:
+      msg: "{{ pihole_update.stdout }}"
 
 - hosts: all
   become: true
@@ -15,34 +27,12 @@
     ansible.builtin.debug:
       msg: "Was changed? {{ upgrade_result.changed }}"
 
-  - name: Send changed webhook
-    when: upgrade_result.changed
-    ansible.builtin.uri:
-      url: "{{ discord_webhook }}"
-      method: POST
-      body_format: json
-      body:
-        username: "Ansible on Pi"
-        embeds:
-          - title: "Update and Upgrade Pis 🥧"
-            color: 65280
-            description: "✅ Ran on host ||{{ ansible_host }}||\n\n⏰ {{ ansible_date_time.iso8601 }}"
-            thumbnail:
-              url: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapers.com%2Fimages%2Fhd%2Ffunny-minion-pictures-j75yzvxewp4syeye.jpg&f=1&nofb=1&ipt=9ce47a95cdf7bb2798d3621c4f9a5e283d9c77d150ab8a1c4d037e358cebf845"
-            fields:
-              - name: "Status"
-                value: "Complete"
-                inline: true
+  - name: Set webhook variables
+    ansible.builtin.set_fact:
+      webhook_title: "{{ 'Update and Upgrade Pis 🥧' if upgrade_result.changed else 'No Update and Upgrade Pis 🥧' }}"
+      webhook_color: "{{ 65280 if upgrade_result.changed else 16711680 }}"
 
-              - name: "Changed"
-                value: "{{ upgrade_result.changed }}"
-                inline: true
-            footer:
-              text: "Built by Pete"
-      status_code: 204
-  
-  - name: Send not changed webhook
-    when: not upgrade_result.changed
+  - name: Send changed webhook
     ansible.builtin.uri:
       url: "{{ discord_webhook }}"
       method: POST
@@ -50,8 +40,8 @@
       body:
         username: "Ansible on Pi"
         embeds:
-          - title: "No Update and Upgrade Pis 🥧"
-            color: 16711680
+          - title: "{{ webhook_title }}"
+            color: "{{ webhook_color }}"
             description: "✅ Ran on host ||{{ ansible_host }}||\n\n⏰ {{ ansible_date_time.iso8601 }}"
             thumbnail:
               url: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapers.com%2Fimages%2Fhd%2Ffunny-minion-pictures-j75yzvxewp4syeye.jpg&f=1&nofb=1&ipt=9ce47a95cdf7bb2798d3621c4f9a5e283d9c77d150ab8a1c4d037e358cebf845"
