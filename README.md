@@ -1,4 +1,10 @@
 # Update Raspberry Pis
+<div align="center">
+  
+
+[![Ansible-lint](https://github.com/1Pete3/Update_Raspberry_Pis/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/1Pete3/Update_Raspberry_Pis/actions/workflows/ansible-lint.yml)   [![YAML-lint](https://github.com/1Pete3/Update_Raspberry_Pis/actions/workflows/yaml-lint.yml/badge.svg)](https://github.com/1Pete3/Update_Raspberry_Pis/actions/workflows/yaml-lint.yml)
+</div>
+
 Automated patch management for a Raspberry Pi homelab fleet. Runs daily via cron, updates all nodes, and sends a Discord notification confirming the result — whether packages changed or not.
 
 ---
@@ -53,7 +59,7 @@ Update_Raspberry_Pis/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/yourusername/Update_Raspberry_Pis.git
+git clone https://github.com/1Pete3/Update_Raspberry_Pis.git
 cd Update_Raspberry_Pis
 ```
 
