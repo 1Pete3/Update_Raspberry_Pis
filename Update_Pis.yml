@@ -3,9 +3,9 @@
   hosts: 192.168.50.198
   connection: local
   become: true
-  changed_when: pihole_update.rc == 0
   tasks:
     - name: Update Pi hole
+      changed_when: pihole_update.rc == 0
       ansible.builtin.command:
         cmd: pihole -up
       register: pihole_update
