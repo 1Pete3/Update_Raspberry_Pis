@@ -51,7 +51,7 @@ Update_Raspberry_Pis/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/yourusername/update_raspberry_pis.git
+git clone https://github.com/yourusername/Update_Raspberry_Pis.git
 cd Update_Raspberry_Pis
 ```
 
