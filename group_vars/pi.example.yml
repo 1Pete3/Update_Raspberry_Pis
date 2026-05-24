@@ -1,3 +1,4 @@
+---
 send_discord: true
 send_email: false
 discord_webhook: "https://discord.com/api/webhooks/your/webhook/url"
