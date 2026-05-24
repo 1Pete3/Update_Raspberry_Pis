@@ -1,0 +1,11 @@
+name: YAML-lint
+run-name: YAML-lint
+on:
+    [push, pull_request]
+jobs:
+    yml-lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: yaml-lint
+              uses: ibiqlik/action-yamllint@v3
