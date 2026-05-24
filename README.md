@@ -1,5 +1,4 @@
 # Update Raspberry Pis
-I have 2 Raspberry Pis part of my homelab and got tired of seeing available updates so I created this repo using Ansible.
 Automated patch management for a Raspberry Pi homelab fleet. Runs daily via cron, updates all nodes, and sends a Discord notification confirming the result — whether packages changed or not.
 
 ---
