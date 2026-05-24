@@ -4,6 +4,9 @@ Automated patch management for a Raspberry Pi homelab fleet. Runs daily via cron
 ---
 
 ## What It Does
+<p align="center">
+<img width="415" height="650" alt="Discord notifcations raspberry pi updates" src="https://github.com/user-attachments/assets/899998c7-eb64-42bb-8192-64195d95d287" />
+</p>
 
 - Runs `apt update`, `apt upgrade`, and `autoremove` across all Pis
 - Sends a Discord embed notification per host with timestamp and change status
